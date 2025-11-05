@@ -22,10 +22,8 @@ export const useProductsList = () => {
 
   const fetchInitiated = useRef(false);
 
-  // Локальное состояние только для поиска (не сохраняем в Redux)
   const [searchQuery, setSearchQuery] = useState('');
   
-  // Debounced значение для фильтрации с задержкой 300ms
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
 
   useEffect(() => {
@@ -38,7 +36,7 @@ export const useProductsList = () => {
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
-    // Используем debounced значение для фильтрации
+
     if (debouncedSearchQuery) {
       const query = debouncedSearchQuery.toLowerCase();
       result = result.filter(
@@ -63,7 +61,7 @@ export const useProductsList = () => {
 
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
-    // Сбрасываем страницу на первую при изменении поиска
+
     if (currentPage !== 1) {
       dispatch(setCurrentPage(1));
     }
@@ -88,7 +86,7 @@ export const useProductsList = () => {
     likedProducts,
     loading,
     error,
-    searchQuery, // Возвращаем локальное значение для input
+    searchQuery, 
     filterFavorites,
     currentPage,
     paginatedProducts,
@@ -96,7 +94,7 @@ export const useProductsList = () => {
     totalPages,
     startIndex,
     endIndex,
-    isSearching: searchQuery !== debouncedSearchQuery, // Индикатор что идет debounce
+    isSearching: searchQuery !== debouncedSearchQuery, 
     handleSearchChange,
     handleFilterToggle,
     handlePageChange,
