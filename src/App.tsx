@@ -5,7 +5,7 @@ import { CreateProduct } from './pages/CreateProduct/CreateProduct';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/EcosystemAlpha">
       <div className="app">
         <Routes>
           <Route path="/" element={<Navigate to="/products" replace />} />
