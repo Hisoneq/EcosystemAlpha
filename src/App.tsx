@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ProductList } from './pages/ProductList/ProductList';
 import { ProductDetail } from './pages/ProductDetail/ProductDetail';
 import { CreateProduct } from './pages/CreateProduct/CreateProduct';
 
 function App() {
   return (
-    <BrowserRouter basename="/EcosystemAlpha">
+    <HashRouter>
       <div className="app">
         <Routes>
           <Route path="/" element={<Navigate to="/products" replace />} />
@@ -14,7 +14,7 @@ function App() {
           <Route path="/create-product" element={<CreateProduct />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
